@@ -1,6 +1,6 @@
 ﻿namespace ElectronicLibrary.Enums
 {
-    public enum BookType
+    public enum BookType : byte
     {
         Physical,
         PDF,

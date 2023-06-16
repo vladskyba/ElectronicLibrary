@@ -11,13 +11,20 @@ namespace ElectronicLibrary.DAO.ModelsConfigs
         {
             base.Configure(genre);
 
-            genre.Property(g => g.Name)
-                .HasColumnName($"{nameof(Genre.Name).ToSnakeCase()}")
-                .IsRequired();
+            genre.ToTable(nameof(Genre).ToSnakeCase())
+                .HasKey(t => t.Id);
 
             genre.Property(g => g.Name)
-                .HasColumnName($"{nameof(Genre.Description).ToSnakeCase()}")
+                .HasColumnName($"{nameof(Genre.Name).ToSnakeCase()}")
+                .HasMaxLength(50)
                 .IsRequired();
+
+            genre.Property(g => g.Description)
+                .HasColumnName($"{nameof(Genre.Description).ToSnakeCase()}")
+                .HasMaxLength(500)
+                .IsRequired();
+
+            genre.HasIndex(g => g.Description).IsUnique();
         }
     }
 }

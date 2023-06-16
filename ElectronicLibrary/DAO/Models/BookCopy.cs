@@ -17,5 +17,11 @@ namespace ElectronicLibrary.DAO.Models
         public ElectronicSource Source { get; set; }
 
         public long? SourceId { get; set; }
+
+        public PhysicalCondition Condition { get; set; }
+
+        public IEnumerable<TakingOrder> Takings { get;}
+
+        public IEnumerable<PurchaseOrder> Purchases { get; }
     }
 }

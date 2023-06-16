@@ -12,16 +12,24 @@
 
         public string ISBN13 { get; set; }
 
+        public string TitleImageUrl { get; set; }
+
         public int PagesCount { get; set; }
+
+        public int PaperCount { get; set; }
+
+        public int ElectronicCount { get; set; }
 
         public long PublisherId { get; set; }
 
-        public Publisher Pusblisher { get; set; }
+        public Publisher Publisher { get; set; }
 
-        public ICollection<BookCopy> Copies { get; set; }
+        public IEnumerable<BookCopy> Copies { get; set; }
 
-        public ICollection<Genre> Genres { get; set; }
+        public IEnumerable<Genre> Genres { get; set; }
 
-        public ICollection<Author> Authors { get; set; }
+        public IEnumerable<Author> Authors { get; set; }
+
+        public IEnumerable<Discount> Discounts { get; set; }
     }
 }

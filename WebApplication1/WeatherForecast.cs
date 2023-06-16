@@ -1,4 +1,4 @@
-namespace ElectronicLibrary
+namespace WebApplication1
 {
     public class WeatherForecast
     {

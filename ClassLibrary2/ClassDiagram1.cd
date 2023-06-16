@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ElectronicLibrary.DAO.Context.LibraryContext" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAIAAAAAkARQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAO\Context\LibraryContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicLibrary.DAO.Models.Book" Collapsed="true">
+    <Position X="7.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEhACAIAAAAAAQxAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAO\Models\Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicLibrary.DAO.Models.BookCopy" Collapsed="true">
+    <Position X="9.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAgAAAABAAEAAAABAAAAAgAAAAQAAAAAAAAA=</HashCode>
+      <FileName>DAO\Models\BookCopy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElectronicLibrary.DAO.Repositories.BookRepository">
+    <Position X="6.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAO\Repositories\BookRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ElectronicLibrary.DAO.Repositories.GenericRepository&lt;TEntity&gt;" Collapsed="true">
+    <Position X="8.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAEAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>DAO\Repositories\GenericRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="ElectronicLibrary.DAO.Repositories.IBookRepository" Collapsed="true">
+    <Position X="9.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAO\Repositories\IBookRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ElectronicLibrary.DAO.Repositories.IGenericRepository&lt;TEntity&gt;" Collapsed="true">
+    <Position X="10.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>DAO\Repositories\IGenericRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

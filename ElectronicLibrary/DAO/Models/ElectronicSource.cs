@@ -2,10 +2,14 @@
 {
     public class ElectronicSource : BaseEntity
     {
-        public string Path { get; set; }
+        public string FilePath { get; set; }
 
-        public int Size { get; set; }
+        public int FileSize { get; set; }
+
+        public string FileName { get; set; }
 
         public DateTime UploadDatetime { get; set; }
+
+        public BookCopy BookCopy { get; set; }
     }
 }
