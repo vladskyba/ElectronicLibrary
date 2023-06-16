@@ -1,7 +1,6 @@
 ﻿using ElectronicLibrary.DAO.Context;
 using ElectronicLibrary.DAO.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography.X509Certificates;
 
 namespace ElectronicLibrary.DAO.Repositories
 {
