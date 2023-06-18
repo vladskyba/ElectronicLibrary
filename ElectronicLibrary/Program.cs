@@ -8,6 +8,13 @@ using System.Text.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 
+services.AddCors(options => options.AddPolicy("CorsPolicy", build =>
+{
+    build.WithOrigins("http://localhost:8080")
+         .AllowAnyMethod()
+         .AllowAnyHeader();
+}));
+
 services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 services.AddScoped<IBookRepository, BookRepository>();
@@ -29,7 +36,7 @@ var host = builder.Configuration["DB_SERVER"] ?? "localhost";
 var port = builder.Configuration["DB_PORT"] ?? "5433";
 var user = builder.Configuration["DB_USER"] ?? "postgres";
 var password = builder.Configuration["DB_PASSWORD"] ?? "asupersecretpassword";
-var database = builder.Configuration["SERVICE_NAME"] ?? "Library02";
+var database = builder.Configuration["SERVICE_NAME"] ?? "Library05";
 
 services.AddDbContext<LibraryContext>(options =>
 {
@@ -50,6 +57,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 

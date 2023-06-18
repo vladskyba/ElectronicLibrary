@@ -15,15 +15,17 @@ namespace ElectronicLibrary.DAO.ModelsConfigs
                 .HasKey(t => t.Id);
 
             copy.Property(g => g.Number)
-                .HasColumnName($"copy_number")
-                .IsRequired();
+                .HasColumnName($"copy_number");
 
-            copy.Property(g => g.QRContent)
-                .HasColumnName($"qr_content")
-                .IsRequired();
+            copy.Property(g => g.QRUrl)
+                .HasColumnName($"qr_url");
 
             copy.Property(g => g.Type)
                 .HasColumnName($"copy_type")
+                .IsRequired();
+
+            copy.Property(g => g.Price)
+                .HasColumnName($"price")
                 .IsRequired();
 
             copy.Property(g => g.Condition)

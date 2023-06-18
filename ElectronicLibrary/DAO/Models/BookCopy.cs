@@ -6,9 +6,11 @@ namespace ElectronicLibrary.DAO.Models
     {
         public BookType Type { get; set; }
 
-        public string Number { get; set; }
+        public decimal Price { get; set; }
 
-        public string QRContent { get; set; }
+        public string Number { get; set; } = string.Empty;
+
+        public string QRUrl { get; set; } = string.Empty;
 
         public Book Book { get; set; }
 

@@ -13,6 +13,12 @@ namespace ElectronicLibrary.Mappers
 
             CreateMap<Book, BookReadDto>()
                 .ReverseMap();
+
+            CreateMap<BookCopy, BookCopyBaseDto>()
+                .ReverseMap();
+
+            CreateMap<BookCopy, BookCopyReadDto>()
+                .ReverseMap();
         }
     }
 }

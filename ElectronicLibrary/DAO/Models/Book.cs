@@ -16,9 +16,9 @@
 
         public int PagesCount { get; set; }
 
-        public int PaperCount { get; set; }
+        public int PaperCount { get; set; } = 0;
 
-        public int ElectronicCount { get; set; }
+        public int ElectronicCount { get; set; } = 0;
 
         public long PublisherId { get; set; }
 

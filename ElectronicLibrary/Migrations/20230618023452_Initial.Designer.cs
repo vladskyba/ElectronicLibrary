@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ElectronicLibrary.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20230614132523_Initial")]
+    [Migration("20230618023452_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -71,7 +71,8 @@ namespace ElectronicLibrary.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<int>("ElectronicCount")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("electronic_count");
 
                     b.Property<string>("ISBN10")
                         .IsRequired()
@@ -96,7 +97,8 @@ namespace ElectronicLibrary.Migrations
                         .HasColumnName("pages_count");
 
                     b.Property<int>("PaperCount")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("paper_count");
 
                     b.Property<long>("PublisherId")
                         .HasColumnType("bigint")
@@ -124,9 +126,6 @@ namespace ElectronicLibrary.Migrations
 
                     b.HasIndex("PublisherId");
 
-                    b.HasIndex("Title")
-                        .IsUnique();
-
                     b.ToTable("book", (string)null);
                 });
 
@@ -152,13 +151,16 @@ namespace ElectronicLibrary.Migrations
                         .HasColumnType("text")
                         .HasColumnName("copy_number");
 
-                    b.Property<string>("QRContent")
+                    b.Property<decimal>("Price")
+                        .HasColumnType("numeric")
+                        .HasColumnName("price");
+
+                    b.Property<string>("QRUrl")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("qr_content");
+                        .HasColumnName("qr_url");
 
                     b.Property<long?>("SourceId")
-                        .IsRequired()
                         .HasColumnType("bigint")
                         .HasColumnName("source_id");
 
@@ -196,7 +198,8 @@ namespace ElectronicLibrary.Migrations
                         .HasColumnName("is_sent");
 
                     b.Property<byte>("Percent")
-                        .HasColumnType("smallint");
+                        .HasColumnType("smallint")
+                        .HasColumnName("percent");
 
                     b.Property<DateTime?>("SentDatetime")
                         .HasColumnType("timestamp with time zone")
@@ -276,9 +279,6 @@ namespace ElectronicLibrary.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Description")
-                        .IsUnique();
-
                     b.ToTable("genre", (string)null);
                 });
 
@@ -304,9 +304,6 @@ namespace ElectronicLibrary.Migrations
                         .HasColumnName("website_url");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
 
                     b.ToTable("publisher", (string)null);
                 });
@@ -452,9 +449,6 @@ namespace ElectronicLibrary.Migrations
                         .HasColumnName("role");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Email")
-                        .IsUnique();
 
                     b.ToTable("user", (string)null);
                 });

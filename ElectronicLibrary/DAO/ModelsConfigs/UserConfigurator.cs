@@ -62,7 +62,7 @@ namespace ElectronicLibrary.DAO.ModelsConfigs
                 .WithOne(t => t.User)
                 .HasForeignKey(t => t.UserId);
 
-            user.HasIndex(g => g.Email).IsUnique();
+            //user.HasIndex(g => g.Email).IsUnique();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace ElectronicLibrary.DAO.ModelsConfigs
                 .HasMaxLength(255)
                 .IsRequired();
 
-            publisher.HasIndex(g => g.Name).IsUnique();
+            //publisher.HasIndex(g => g.Name).IsUnique();
         }
     }
 }

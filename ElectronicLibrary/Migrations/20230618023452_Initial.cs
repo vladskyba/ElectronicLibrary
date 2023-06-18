@@ -104,8 +104,8 @@ namespace ElectronicLibrary.Migrations
                     isbn13 = table.Column<string>(type: "character varying(13)", maxLength: 13, nullable: false),
                     title_image_url = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
                     pages_count = table.Column<int>(type: "integer", nullable: false),
-                    PaperCount = table.Column<int>(type: "integer", nullable: false),
-                    ElectronicCount = table.Column<int>(type: "integer", nullable: false),
+                    paper_count = table.Column<int>(type: "integer", nullable: false),
+                    electronic_count = table.Column<int>(type: "integer", nullable: false),
                     publisher_id = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
@@ -130,7 +130,7 @@ namespace ElectronicLibrary.Migrations
                     stop = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     sent_datetime = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     email_content = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
-                    Percent = table.Column<byte>(type: "smallint", nullable: false),
+                    percent = table.Column<byte>(type: "smallint", nullable: false),
                     user_id = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
@@ -236,10 +236,11 @@ namespace ElectronicLibrary.Migrations
                     book_copy_id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     copy_type = table.Column<byte>(type: "smallint", nullable: false),
+                    price = table.Column<decimal>(type: "numeric", nullable: false),
                     copy_number = table.Column<string>(type: "text", nullable: false),
-                    qr_content = table.Column<string>(type: "text", nullable: false),
+                    qr_url = table.Column<string>(type: "text", nullable: false),
                     book_id = table.Column<long>(type: "bigint", nullable: false),
-                    source_id = table.Column<long>(type: "bigint", nullable: false),
+                    source_id = table.Column<long>(type: "bigint", nullable: true),
                     physical_condition = table.Column<byte>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
@@ -361,12 +362,6 @@ namespace ElectronicLibrary.Migrations
                 column: "publisher_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_book_title",
-                table: "book",
-                column: "title",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_book_author_book_id",
                 table: "book_author",
                 column: "book_id");
@@ -398,18 +393,6 @@ namespace ElectronicLibrary.Migrations
                 column: "discount_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_genre_description",
-                table: "genre",
-                column: "description",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_publisher_name",
-                table: "publisher",
-                column: "name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_purchase_basket_purchase_id",
                 table: "purchase_basket",
                 column: "purchase_id");
@@ -438,12 +421,6 @@ namespace ElectronicLibrary.Migrations
                 name: "IX_taking_order_created_for_id",
                 table: "taking_order",
                 column: "created_for_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_user_email",
-                table: "user",
-                column: "email",
-                unique: true);
         }
 
         /// <inheritdoc />

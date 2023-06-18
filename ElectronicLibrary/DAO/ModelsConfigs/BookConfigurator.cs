@@ -42,6 +42,14 @@ namespace ElectronicLibrary.DAO.ModelsConfigs
                 .HasColumnName($"{nameof(Book.PagesCount).ToSnakeCase()}")
                 .IsRequired();
 
+            book.Property(b => b.PaperCount)
+                .HasColumnName($"{nameof(Book.PaperCount).ToSnakeCase()}")
+                .IsRequired();
+
+            book.Property(b => b.ElectronicCount)
+                .HasColumnName($"{nameof(Book.ElectronicCount).ToSnakeCase()}")
+                .IsRequired();
+
             book.Property(b => b.TitleImageUrl)
                 .HasColumnName($"{nameof(Book.TitleImageUrl).ToSnakeCase()}")
                 .HasMaxLength(255)
@@ -74,7 +82,7 @@ namespace ElectronicLibrary.DAO.ModelsConfigs
                 .WithMany(c => c.Books)
                 .HasForeignKey(key => key.PublisherId);
 
-            book.HasIndex(g => g.Title).IsUnique();
+            //book.HasIndex(g => g.Title).IsUnique();
         }
     }
 }

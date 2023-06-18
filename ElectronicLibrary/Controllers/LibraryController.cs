@@ -15,21 +15,16 @@ namespace ElectronicLibrary.Controllers
 
         private readonly IBookRepository _bookRepo;
 
+        private readonly IGenericRepository<Genre> _genreRepo;
+
         private readonly IMapper _mapper;
 
-        public LibraryController(IBookRepository bookRepo, IGenericRepository<Author> authorRepo, IMapper mapper)
+        public LibraryController(IBookRepository bookRepo, IGenericRepository<Author> authorRepo, IGenericRepository<Genre> genreRepo, IMapper mapper)
         {
             _mapper = mapper;
             _bookRepo = bookRepo;
             _authorRepo = authorRepo;
-        }
-
-        public BookRepository BookRepository
-        {
-            get => default;
-            set
-            {
-            }
+            _genreRepo = genreRepo;
         }
 
         [HttpPost("author")]
@@ -61,5 +56,49 @@ namespace ElectronicLibrary.Controllers
 
             return Ok(bookReturn);
         }
+
+        [HttpPost("genre")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerResponse(StatusCodes.Status201Created, Type = typeof(BookReadDto))]
+        public async Task<IActionResult> CreateGenre([FromBody] GenreBaseDto genreDto)
+        {
+            var genreModel = _mapper.Map<Genre>(genreDto);
+            var addedBook = await _genreRepo.AddAsync(genreModel);
+            var bookReturn = _mapper.Map<GenreReadDto>(addedBook);
+
+            return Ok(bookReturn);
+        }
+
+        [HttpGet("getAll")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [SwaggerResponse(StatusCodes.Status201Created, Type = typeof(GenreReadDto))]
+        public async Task<IActionResult> GetReservationByUser()
+        {
+            var genres = await _genreRepo.GetAsync();
+
+            return Ok(_mapper.Map<IEnumerable<GenreReadDto>>(genres));
+        }
+
+        //[HttpGet("getActive")]
+        //[ProducesResponseType(StatusCodes.Status201Created)]
+        //[ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        //[SwaggerResponse(StatusCodes.Status201Created, Type = typeof(GenreReadDto))]
+        //public async Task<IActionResult> GetByParameters(string? gender, int? price)
+        //{
+        //    var query = $"SELECT user_name " +
+        //        $"FROM user " +
+        //        $"WHERE (gender IS NULL OR gender = {gender}" +
+        //        $"AND (price is NULL OR price < {price})";
+
+        //    var data = ...
+
+
+        //    return Ok(_mapper.Map<IEnumerable<GenreReadDto>>(data));
+        //}
     }
 }
