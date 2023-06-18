@@ -19,6 +19,9 @@ namespace ElectronicLibrary.Mappers
 
             CreateMap<BookCopy, BookCopyReadDto>()
                 .ReverseMap();
+
+            CreateMap<Discount, DiscountReadDto>()
+                .ReverseMap();
         }
     }
 }

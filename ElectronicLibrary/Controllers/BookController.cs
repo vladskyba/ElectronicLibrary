@@ -5,7 +5,6 @@ using ElectronicLibrary.DataTransfer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Annotations;
-using System.Security.Cryptography.X509Certificates;
 
 namespace ElectronicLibrary.Controllers
 {
@@ -50,6 +49,7 @@ namespace ElectronicLibrary.Controllers
                      .Include(a => a.Authors)
                      .Include(p => p.Publisher)
                      .Include(p => p.Copies)
+                     .Include(d => d.Discounts)
                 );
 
             return Ok(_mapper.Map<IEnumerable<BookReadDto>>(books));

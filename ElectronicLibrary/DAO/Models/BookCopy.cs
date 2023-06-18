@@ -8,6 +8,8 @@ namespace ElectronicLibrary.DAO.Models
 
         public decimal Price { get; set; }
 
+        public bool IsActive { get; set; }
+
         public string Number { get; set; } = string.Empty;
 
         public string QRUrl { get; set; } = string.Empty;
